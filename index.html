@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Científica Avanzada</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-calculator"></i> Calculadora Científica Pro</h1>
+            <p class="subtitle">Precisión y potencia matemática en tus manos</p>
+        </header>
+        
+        <!-- Overlay para la sorpresa -->
+        <div id="special-overlay" class="special-overlay">
+            <div class="special-content">
+                <div class="special-gesture" id="special-gesture">🖕</div>
+                <button id="close-special" class="close-special-btn">
+                    <i class="fas fa-times"></i> Continuar calculando
+                </button>
+            </div>
+        </div>
+        
+        <main class="calculator-container">
+            <div class="calculator">
+                <!-- Pantalla de la calculadora -->
+                <div class="display-container">
+                    <div class="display-history" id="history"></div>
+                    <div class="display" id="display">0</div>
+                </div>
+                
+                <!-- Teclado de la calculadora -->
+                <div class="keypad">
+                    <!-- Fila 1 -->
+                    <button class="btn func" data-action="sin">sin</button>
+                    <button class="btn func" data-action="cos">cos</button>
+                    <button class="btn func" data-action="tan">tan</button>
+                    <button class="btn func" data-action="log">log</button>
+                    <button class="btn func" data-action="ln">ln</button>
+                    
+                    <!-- Fila 2 -->
+                    <button class="btn func" data-action="π">π</button>
+                    <button class="btn func" data-action="e">e</button>
+                    <button class="btn func" data-action="√">√</button>
+                    <button class="btn func" data-action="x²">x²</button>
+                    <button class="btn func" data-action="x^y">x^y</button>
+                    
+                    <!-- Fila 3 -->
+                    <button class="btn func" data-action="(">(</button>
+                    <button class="btn func" data-action=")">)</button>
+                    <button class="btn func" data-action="%">%</button>
+                    <button class="btn clear" data-action="clear">C</button>
+                    <button class="btn delete" data-action="delete"><i class="fas fa-backspace"></i></button>
+                    
+                    <!-- Fila 4 -->
+                    <button class="btn number" data-number="7">7</button>
+                    <button class="btn number" data-number="8">8</button>
+                    <button class="btn number" data-number="9">9</button>
+                    <button class="btn operator" data-operator="/">÷</button>
+                    <button class="btn func" data-action="10^x">10^x</button>
+                    
+                    <!-- Fila 5 -->
+                    <button class="btn number" data-number="4">4</button>
+                    <button class="btn number" data-number="5">5</button>
+                    <button class="btn number" data-number="6">6</button>
+                    <button class="btn operator" data-operator="*">×</button>
+                    <button class="btn func" data-action="fact">x!</button>
+                    
+                    <!-- Fila 6 -->
+                    <button class="btn number" data-number="1">1</button>
+                    <button class="btn number" data-number="2">2</button>
+                    <button class="btn number" data-number="3">3</button>
+                    <button class="btn operator" data-operator="-">−</button>
+                    <button class="btn func" data-action="abs">|x|</button>
+                    
+                    <!-- Fila 7 -->
+                    <button class="btn number" data-number="0">0</button>
+                    <button class="btn" data-action=".">.</button>
+                    <button class="btn equals" data-action="equals">=</button>
+                    <button class="btn operator" data-operator="+">+</button>
+                    <button class="btn func" data-action="±">±</button>
+                </div>
+                
+                <!-- Modos adicionales -->
+                <div class="modes">
+                    <button class="mode-btn" id="deg-mode" data-mode="deg">
+                        <i class="fas fa-circle"></i> DEG
+                    </button>
+                    <button class="mode-btn" id="rad-mode" data-mode="rad">
+                        <i class="far fa-circle"></i> RAD
+                    </button>
+                    <button class="mode-btn" id="grad-mode" data-mode="grad">
+                        <i class="far fa-circle"></i> GRAD
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Información y ayuda -->
+            <div class="info-panel">
+                <h3><i class="fas fa-info-circle"></i> Funciones disponibles</h3>
+                <ul>
+                    <li><strong>sin, cos, tan:</strong> Funciones trigonométricas</li>
+                    <li><strong>log:</strong> Logaritmo base 10</li>
+                    <li><strong>ln:</strong> Logaritmo natural</li>
+                    <li><strong>√:</strong> Raíz cuadrada</li>
+                    <li><strong>x²:</strong> Cuadrado de un número</li>
+                    <li><strong>x^y:</strong> Potencia (x elevado a y)</li>
+                    <li><strong>x!:</strong> Factorial</li>
+                    <li><strong>10^x:</strong> 10 elevado a x</li>
+                    <li><strong>|x|:</strong> Valor absoluto</li>
+                    <li><strong>±:</strong> Cambiar signo</li>
+                </ul>
+                <div class="instructions">
+                    <h4><i class="fas fa-lightbulb"></i> Instrucciones</h4>
+                    <p>Usa los botones o tu teclado para operar.</p>
+                    <p>Cambia entre modos DEG, RAD y GRAD para cálculos trigonométricos.</p>
+                    <p>Presiona <span class="equals-symbol">=</span> para obtener resultados precisos.</p>
+                </div>
+                
+                <div class="features">
+                    <h4><i class="fas fa-star"></i> Características avanzadas:</h4>
+                    <ul>
+                        <li><strong>Precisión científica:</strong> Hasta 10 decimales</li>
+                        <li><strong>Notación exponencial:</strong> Para números muy grandes o pequeños</li>
+                        <li><strong>Historial de cálculos:</strong> Visualiza tus operaciones anteriores</li>
+                        <li><strong>Interfaz intuitiva:</strong> Diseño profesional y fácil de usar</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p>Calculadora Científica Pro &copy; 2023 - Herramienta matemática de alta precisión</p>
+        </footer>
+    </div>
+    
+    <!-- Sonido para la sorpresa -->
+    <audio id="special-sound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-cartoon-timpani-boom-1086.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script src="script.js"></script>
+</body>
+</html>

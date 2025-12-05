@@ -1,0 +1,442 @@
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Exo 2', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #e6e6e6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #00dbde, #fc00ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 10px;
+}
+
+.header .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+/* Overlay para la sorpresa */
+.special-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.special-overlay.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.special-content {
+    text-align: center;
+    animation: scaleIn 0.5s ease;
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.special-gesture {
+    font-size: 40vw;
+    animation: pulse 1.5s infinite, rotate 3s infinite linear;
+    text-shadow: 0 0 50px rgba(255, 65, 108, 0.7),
+                 0 0 100px rgba(255, 65, 108, 0.5),
+                 0 0 150px rgba(255, 65, 108, 0.3);
+    margin-bottom: 40px;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.close-special-btn {
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 20px rgba(255, 65, 108, 0.3);
+}
+
+.close-special-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 65, 108, 0.4);
+}
+
+/* Contenedor principal */
+.calculator-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.calculator {
+    flex: 1;
+    min-width: 350px;
+    background: #0f3460;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Pantalla */
+.display-container {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+.display-history {
+    font-size: 1rem;
+    color: #aaa;
+    min-height: 25px;
+    text-align: right;
+    word-break: break-all;
+}
+
+.display {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.2rem;
+    text-align: right;
+    word-break: break-all;
+    color: #00ff9d;
+}
+
+/* Teclado */
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 15px 5px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.number {
+    background: #2d4059;
+}
+
+.number:hover {
+    background: #3a506b;
+}
+
+.operator {
+    background: #ff5722;
+}
+
+.operator:hover {
+    background: #ff7043;
+}
+
+.func {
+    background: #3d5af1;
+    font-size: 1rem;
+}
+
+.func:hover {
+    background: #4d6af5;
+}
+
+.clear {
+    background: #ff416c;
+}
+
+.clear:hover {
+    background: #ff4b7d;
+}
+
+.delete {
+    background: #9c27b0;
+}
+
+.delete:hover {
+    background: #ab47bc;
+}
+
+.equals {
+    background: #00b894;
+    grid-column: span 2;
+}
+
+.equals:hover {
+    background: #00d3a9;
+    transform: translateY(-3px);
+}
+
+/* Modos */
+.modes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.mode-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ccc;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mode-btn.active {
+    background: rgba(61, 90, 241, 0.3);
+    color: #3d5af1;
+    border-color: #3d5af1;
+}
+
+.mode-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Panel de información */
+.info-panel {
+    flex: 1;
+    min-width: 300px;
+    background: rgba(15, 52, 96, 0.7);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-panel h3 {
+    color: #00dbde;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-panel ul {
+    list-style-type: none;
+    margin-bottom: 25px;
+}
+
+.info-panel li {
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+.info-panel li:before {
+    content: "►";
+    color: #fc00ff;
+    margin-right: 10px;
+    font-size: 0.8rem;
+}
+
+.instructions {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.instructions h4 {
+    color: #ffcc00;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.instructions p {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.equals-symbol {
+    display: inline-block;
+    background: #00b894;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 24px;
+    font-weight: bold;
+    margin: 0 3px;
+}
+
+.features {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.features h4 {
+    color: #00ff9d;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.features ul {
+    list-style-type: none;
+    margin-bottom: 0;
+}
+
+.features li {
+    padding: 6px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+.features li:before {
+    content: "✓";
+    color: #00ff9d;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .calculator-container {
+        flex-direction: column;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .special-gesture {
+        font-size: 60vw;
+    }
+    
+    .display {
+        font-size: 1.8rem;
+    }
+    
+    .keypad {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+    }
+    
+    .btn {
+        padding: 12px 5px;
+        font-size: 1rem;
+    }
+    
+    .func {
+        font-size: 0.9rem;
+    }
+}
